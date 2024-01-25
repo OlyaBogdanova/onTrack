@@ -40,10 +40,12 @@ export function getTotalActivitySeconds(activity) {
     )
 }
 
-export function scrollToHour(hour = null, isSmooth = true) {
-  hour ??= currentHour()
-
+export function scrollToHour(hour, isSmooth = true) {
   const el = hour === MIDNIGHT_HOUR ? document.body : timelineItemRefs.value[hour - 1].$el
 
   el.scrollIntoView({ behavior: isSmooth ? 'smooth' : 'instant' })
+}
+
+export function scrollToCurrentHour(isSmooth = true) {
+  scrollToHour(currentHour(), isSmooth)
 }
