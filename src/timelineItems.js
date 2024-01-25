@@ -18,13 +18,12 @@ export function setTimelineItemActivity(timelineItem, activityId) {
 }
 
 export function updateTimelineActivitySeconds(timelineItem, activitySeconds) {
-  console.log('update', activitySeconds)
-  timelineItem.activitySeconds += activitySeconds
+  timelineItem.activitySeconds = activitySeconds
 }
 
-export function resetTimelineItemActivities(id) {
+export function resetTimelineItemActivities(activity) {
   timelineItems.value.forEach((timelineItem) => {
-    if (timelineItem.activityId === id) {
+    if (timelineItem.activityId === activity.id) {
       timelineItem.activityId = null
       timelineItem.activitySeconds = 0
     }

@@ -37,8 +37,8 @@ defineProps({
 })
 
 function deleteAndResetActivity(activity) {
-  resetTimelineItemActivities(activity.id)
-  deleteActivity(activity.id)
+  resetTimelineItemActivities(activity)
+  deleteActivity(activity)
 }
 </script>
 <style lang=""></style>
