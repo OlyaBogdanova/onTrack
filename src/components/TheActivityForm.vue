@@ -6,13 +6,16 @@
       class="flex-1 rounded border px-4 text-xl"
       placeholder="Activity name"
     />
-    <BaseButton :disabled="!name.trim()"><PlusIcon class="h-8" /></BaseButton>
+    <BaseButton :disabled="!name.trim()">
+      <BaseIcon name="Plus" class="h-8" />
+    </BaseButton>
   </form>
 </template>
 <script setup>
 import { ref, nextTick } from 'vue'
-import { PlusIcon } from '@heroicons/vue/24/outline'
+
 import BaseButton from '@/components/BaseButton.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import { SECONDS_IN_HOUR } from '@/constans'
 import { id } from '@/functions'
 import { createActivity } from '@/activities.js'

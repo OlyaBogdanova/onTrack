@@ -2,8 +2,8 @@
   <li class="flex flex-col gap-2 p-4">
     <div class="flex gap-2 items-center">
       <BaseButton :type="BUTTON_TYPE_DANGER" @click="deleteAndResetActivity(activity)">
-        <TrashIcon class="h-8"
-      /></BaseButton>
+        <BaseIcon name="Trash" class="h-8" />
+      </BaseButton>
       <span class="truncate text-xl">{{ activity.name }}</span>
     </div>
     <div class="flex gap-2">
@@ -21,12 +21,11 @@
 <script setup>
 import BaseButton from '@/components/BaseButton.vue'
 import BaseSelect from '@/components/BaseSelect.vue'
-import { TrashIcon } from '@heroicons/vue/24/outline'
 import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constans.js'
 import { isActivityValid } from '@/validators.js'
 import { deleteActivity, updateActivity } from '@/activities.js'
 import { resetTimelineItemActivities } from '@/timelineItems.js'
-
+import BaseIcon from '@/components/BaseIcon.vue'
 import ActivitySecondsToComplete from '@/components/ActivitySecondsToComplete.vue'
 defineProps({
   activity: {

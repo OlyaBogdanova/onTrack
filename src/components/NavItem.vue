@@ -1,7 +1,7 @@
 <template>
   <li class="flex-1">
     <a :href="`#${navItem.page}`" :class="classes" @click="navigate(navItem.page)">
-      <component :is="navItem.icon" class="h-6 w-6" />{{ navItem.page }}
+      <BaseIcon :name="navItem.icon" class="h-6 w-6" />{{ navItem.page }}
     </a>
   </li>
 </template>
@@ -10,7 +10,7 @@
 import { computed } from 'vue'
 import { navigate, currentPage } from '@/router.js'
 import { isNavItemValid } from '@/validators.js'
-
+import BaseIcon from '@/components/BaseIcon.vue'
 const props = defineProps({
   navItem: {
     type: Object,
