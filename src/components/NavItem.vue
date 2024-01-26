@@ -1,7 +1,7 @@
 <template>
   <li class="flex-1">
     <a :href="`#${navItem.page}`" :class="classes" @click="navigate(navItem.page)">
-      <BaseIcon :name="navItem.icon" classes="h-6 w-6" />{{ navItem.page }}
+      <BaseIcon :name="navItem.icon" class="h-6 w-6" />{{ navItem.page }}
     </a>
   </li>
 </template>
