@@ -20,7 +20,7 @@
   </div>
 </template>
 <script setup>
-import { watch } from 'vue'
+import { watchEffect } from 'vue'
 import BaseButton from '@/components/BaseButton.vue'
 import BaseIcon from '@/components/BaseIcon.vue'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
@@ -37,15 +37,8 @@ const props = defineProps({
   }
 })
 
-const { isRunning, start, stop, reset, seconds } = useStopWatch(
-  props.timelineItem.activitySeconds,
-  updateTimelineItemActivitySeconds
-)
+const { isRunning, start, stop, reset, seconds } = useStopWatch(props.timelineItem.activitySeconds)
 
-watch(() => props.timelineItem.activityId, updateTimelineItemActivitySeconds)
-
-function updateTimelineItemActivitySeconds() {
-  updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value })
-}
+watchEffect(() => updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value }))
 </script>
 <style lang=""></style>
