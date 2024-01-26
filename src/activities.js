@@ -22,7 +22,7 @@ export function updateActivity(activity, fields) {
 }
 
 function generateActivities() {
-  return [' Coding', 'Reading', 'Training'].map((name, hour) => ({
+  return ['Coding', 'Reading', 'Training'].map((name, hour) => ({
     id: id(),
     name,
     secondsToComplete: 15 * 60
