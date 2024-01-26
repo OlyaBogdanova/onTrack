@@ -3,6 +3,10 @@ import { SECONDS_IN_HOUR } from '@/constans.js'
 import { id } from '@/functions.js'
 
 export const activities = ref(generateActivities())
+export const trackedActivities = computed(() =>
+  activities.value.filter((activity) => activity.secondsToComplete)
+)
+
 export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
 
 export function createActivity(activity) {
