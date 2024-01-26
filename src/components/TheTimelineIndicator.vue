@@ -46,6 +46,7 @@ watchEffect(() => {
 setInterval(() => secondsSinceMidhight.value++, MILLISECONDS_IN_SECOND)
 
 onActivated(() => {
+  secondsSinceMidhight.value = calculateSecondsSinceMidnight()
   timer = setInterval(() => secondsSinceMidhight.value++, MILLISECONDS_IN_SECOND)
 })
 onDeactivated(() => clearInterval(timer))
