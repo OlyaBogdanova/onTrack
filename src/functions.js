@@ -1,4 +1,11 @@
-import { SECONDS_IN_MINUTE, MINUTES_IN_HOUR, MILLISECONDS_IN_SECOND } from './constans'
+import {
+  SECONDS_IN_MINUTE,
+  MINUTES_IN_HOUR,
+  MILLISECONDS_IN_SECOND,
+  LOW_PERCENT,
+  MEDIUM_PERCENT,
+  HUNDRED_PERCENT
+} from './constans'
 import { isNull } from './validators'
 
 export function id() {
@@ -36,4 +43,11 @@ export function formatSeconds(seconds) {
 
 export function currentHour() {
   return new Date().getHours()
+}
+
+export function getProgressColorClass(percentage) {
+  if (percentage < LOW_PERCENT) return 'bg-red-500'
+  if (percentage < MEDIUM_PERCENT) return 'bg-yellow-500'
+  if (percentage < HUNDRED_PERCENT) return 'bg-blue-500'
+  return 'bg-green-500'
 }
