@@ -5,16 +5,16 @@ import { computed } from 'vue'
 
 export function useProgress(activity) {
   const percentage = computed(() =>
-    calculateActivityCompletionPercentage(activity, trackActivitySeconds.value)
+    calculateActivityCompletionPercentage(activity, trackSeconds.value)
   )
   const colorClass = computed(() => getProgressColorClass(percentage.value))
-  const trackActivitySeconds = computed(() =>
+  const trackSeconds = computed(() =>
     calculateTrackedActivitySeconds(timelineItems.value, activity)
   )
 
   return {
     percentage,
     colorClass,
-    trackActivitySeconds
+    trackSeconds
   }
 }

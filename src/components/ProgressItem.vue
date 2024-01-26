@@ -7,8 +7,7 @@
     <div class="flex justify-between font-mono text-sm">
       <span>{{ percentage }}%</span>
       <span
-        >{{ formatSeconds(trackActivitySeconds) }} /
-        {{ formatSeconds(activity.secondsToComplete) }}</span
+        >{{ formatSeconds(trackSeconds) }} / {{ formatSeconds(activity.secondsToComplete) }}</span
       >
     </div>
   </li>
@@ -24,6 +23,6 @@ const props = defineProps({
     validator: isActivityValid
   }
 })
-const { percentage, colorClass, trackActivitySeconds } = useProgress(props.activity)
+const { percentage, colorClass, trackSeconds } = useProgress(props.activity)
 </script>
 <style lang=""></style>

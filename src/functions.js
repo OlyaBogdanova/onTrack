@@ -34,6 +34,12 @@ export function generatePeriodSelectOptions() {
     activitySeconds: 0
   }))
 }
+
+export function formatSecondsWithSign(seconds) {
+  const sign = seconds >= 0 ? '+' : '-'
+
+  return `${sign}${formatSeconds(seconds)}`
+}
 export function formatSeconds(seconds) {
   const date = new Date()
   date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECOND)

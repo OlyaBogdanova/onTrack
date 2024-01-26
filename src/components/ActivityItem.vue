@@ -14,7 +14,7 @@
         @select="updateActivity(activity, { secondsToComplete: $event || 0 })"
         class="font-mono flex-1"
       />
-      <ActivitySecondsToComplete v-if="activity.secondsToComplete" :activity="activity" />
+      <RemainingActivitySeconds v-if="activity.secondsToComplete" :activity="activity" />
     </div>
   </li>
 </template>
@@ -27,7 +27,7 @@ import { isActivityValid } from '@/validators.js'
 import { deleteActivity, updateActivity } from '@/activities.js'
 import { resetTimelineItemActivities, timelineItems } from '@/timelineItems.js'
 import BaseIcon from '@/components/BaseIcon.vue'
-import ActivitySecondsToComplete from '@/components/ActivitySecondsToComplete.vue'
+import RemainingActivitySeconds from '@/components/RemainingActivitySeconds.vue'
 defineProps({
   activity: {
     type: Object,
