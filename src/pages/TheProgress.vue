@@ -1,11 +1,6 @@
 <template>
   <ul class="divide-y">
-    <ProgressItem
-      v-for="(activity, index) in trackedActivities"
-      :key="activity.id"
-      :index="index"
-      :activity="activity"
-    />
+    <ProgressItem v-for="activity in trackedActivities" :key="activity.id" :activity="activity" />
   </ul>
 </template>
 <script setup>
