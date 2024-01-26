@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-2">
     <BaseButton @click="select(null)" :type="BUTTON_TYPE_NEUTRAL">
-      <BaseIcon :name="ICON_XMARK" class="h-8" />
+      <BaseIcon :name="ICON_XMARK" />
     </BaseButton>
     <select
       name=""

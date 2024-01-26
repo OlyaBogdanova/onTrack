@@ -2,7 +2,7 @@
   <li class="flex flex-col gap-2 p-4">
     <div class="flex gap-2 items-center">
       <BaseButton :type="BUTTON_TYPE_DANGER" @click="deleteAndResetActivity(activity)">
-        <BaseIcon :name="ICON_TRASH" class="h-8" />
+        <BaseIcon :name="ICON_TRASH" />
       </BaseButton>
       <span class="truncate text-xl">{{ activity.name }}</span>
     </div>
