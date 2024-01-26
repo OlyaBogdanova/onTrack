@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
-import { SECONDS_IN_HOUR } from '@/constans.js'
+import { HUNDRED_PERCENT } from '@/constans.js'
 import { id } from '@/functions.js'
+import { getTotalActivitySeconds } from '@/timelineItems.js'
 
 export const activities = ref(generateActivities())
 export const trackedActivities = computed(() =>
@@ -25,10 +26,15 @@ function generateActivities() {
   return [' Coding', 'Reading', 'Training'].map((name, hour) => ({
     id: id(),
     name,
-    secondsToComplete: hour * SECONDS_IN_HOUR
+    secondsToComplete: 15 * 60
   }))
 }
 
 function generateActivitySelectOptions(activities) {
   return activities.map((activity) => ({ label: activity.name, value: activity.id }))
+}
+
+export function getActivityProgress(activity) {
+  const activitySeconds = getTotalActivitySeconds(activity)
+  return Math.floor((activitySeconds * HUNDRED_PERCENT) / activity.secondsToComplete)
 }
