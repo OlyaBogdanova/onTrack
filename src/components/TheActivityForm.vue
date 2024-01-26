@@ -7,7 +7,7 @@
       placeholder="Activity name"
     />
     <BaseButton :disabled="!name.trim()">
-      <BaseIcon name="Plus" class="h-8" />
+      <BaseIcon :name="ICON_PLUS" class="h-8" />
     </BaseButton>
   </form>
 </template>
@@ -19,7 +19,7 @@ import BaseIcon from '@/components/BaseIcon.vue'
 import { SECONDS_IN_HOUR } from '@/constans'
 import { id } from '@/functions'
 import { createActivity } from '@/activities.js'
-
+import { ICON_PLUS } from '@/icons.js'
 const name = ref('')
 async function submit() {
   const activity = {

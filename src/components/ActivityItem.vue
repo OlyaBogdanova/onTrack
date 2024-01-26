@@ -2,7 +2,7 @@
   <li class="flex flex-col gap-2 p-4">
     <div class="flex gap-2 items-center">
       <BaseButton :type="BUTTON_TYPE_DANGER" @click="deleteAndResetActivity(activity)">
-        <BaseIcon name="Trash" class="h-8" />
+        <BaseIcon :name="ICON_TRASH" class="h-8" />
       </BaseButton>
       <span class="truncate text-xl">{{ activity.name }}</span>
     </div>
@@ -22,6 +22,7 @@
 import BaseButton from '@/components/BaseButton.vue'
 import BaseSelect from '@/components/BaseSelect.vue'
 import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constans.js'
+import { ICON_TRASH } from '@/icons.js'
 import { isActivityValid } from '@/validators.js'
 import { deleteActivity, updateActivity } from '@/activities.js'
 import { resetTimelineItemActivities } from '@/timelineItems.js'

@@ -12,4 +12,4 @@ import { currentPage, routes } from '@/router.js'
   <TheNav />
 </template>
 
-<style scoped></style>
+<style></style>
