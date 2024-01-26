@@ -9,21 +9,24 @@
     <BaseButton v-if="isRunning" :type="BUTTON_TYPE_WARNING" @click="stop">
       <BaseIcon :name="ICON_PAUSE" />
     </BaseButton>
-    <BaseButton v-else :type="BUTTON_TYPE_SUCCESS" :disabled="isStartButtonDisabled" @click="start">
+    <BaseButton
+      v-else
+      :type="BUTTON_TYPE_SUCCESS"
+      :disabled="timelineItem.hour !== currentHour()"
+      @click="start"
+    >
       <BaseIcon :name="ICON_PLAY" />
     </BaseButton>
   </div>
 </template>
 <script setup>
-import { computed, ref, watch } from 'vue'
 import BaseButton from '@/components/BaseButton.vue'
 import BaseIcon from '@/components/BaseIcon.vue'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
 import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '@/constans.js'
 import { isTimelineItemValid } from '@/validators.js'
 import { formatSeconds, currentHour } from '@/functions.js'
-import { MILLISECONDS_IN_SECOND } from '../constans'
-import { updateTimelineItem } from '@/timelineItems.js'
+import { useStopWatch } from '@/composables/stopwatch.js'
 
 const props = defineProps({
   timelineItem: {
@@ -33,36 +36,6 @@ const props = defineProps({
   }
 })
 
-const seconds = ref(props.timelineItem.activitySeconds)
-const isRunning = ref(false)
-
-const isStartButtonDisabled = computed(() => props.timelineItem.hour !== currentHour())
-
-function start() {
-  isRunning.value = setInterval(() => {
-    updateTimelineItem(props.timelineItem, {
-      activitySeconds: props.timelineItem.activitySeconds + 1
-    })
-    seconds.value++
-  }, MILLISECONDS_IN_SECOND)
-}
-
-function stop() {
-  clearInterval(isRunning.value)
-  isRunning.value = false
-}
-
-function reset() {
-  stop()
-
-  updateTimelineItem(props.timelineItem, {
-    activitySeconds: props.timelineItem.activitySeconds - seconds.value
-  })
-  seconds.value = 0
-}
-watch(
-  () => props.timelineItem.activityId,
-  () => updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value })
-)
+const { isRunning, start, stop, reset } = useStopWatch(props.timelineItem)
 </script>
 <style lang=""></style>
