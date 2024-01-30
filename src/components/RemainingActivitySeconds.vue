@@ -10,7 +10,7 @@ import { isActivityValid } from '@/validators'
 import { calculateTrackedActivitySeconds, timelineItems } from '@/timelineItems'
 
 const props = defineProps({
-  activity: { type: Number, required: true, validator: isActivityValid }
+  activity: { type: Object, required: true, validator: isActivityValid }
 })
 
 const remainingSeconds = computed(
